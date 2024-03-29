@@ -22,7 +22,7 @@ const docs = {
   },
   servers: [
     {
-      url: 'http://localhost:5000/api/v1',
+      url: `${process.env.SERVER}/api/v1`,
       variables: {},
     },
   ],

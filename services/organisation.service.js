@@ -25,9 +25,9 @@ const getOrganization = async (organizationId) => {
 };
 
 const updateOrganization = async (organizationId, updateData) => {
-  let organization = await getOrganization(organizationId);
+  const organization = await getOrganization(organizationId);
   Object.assign(organization, updateData);
-  organization = await Organizations.update(updateData, { where: { id: organizationId } });
+  await organization.save();
   return organization;
 };
 
@@ -38,7 +38,7 @@ const deleteOrganization = async (organizationId) => {
     throw new Errors.BadRequestError(`Organization with id: ${organizationId} is used as foreign key in pricing.`);
   }
   const organization = await getOrganization(organizationId);
-  await Organizations.destroy({ where: { id: organization } });
+  await Organizations.destroy({ where: { id: organizationId } });
   return organization;
 };
 

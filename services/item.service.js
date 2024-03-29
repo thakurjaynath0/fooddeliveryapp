@@ -39,7 +39,7 @@ const deleteItem = async (itemId) => {
   }
 
   const item = await getItem(itemId);
-  await item.destory();
+  await Items.destroy({ where: { id: itemId } });
   return item;
 };
 

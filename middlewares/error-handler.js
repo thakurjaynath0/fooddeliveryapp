@@ -1,6 +1,7 @@
 const { StatusCodes } = require('http-status-codes');
 
-const errorHandlerMiddleware = (err, req, res) => {
+// eslint-disable-next-line no-unused-vars
+const errorHandlerMiddleware = (err, req, res, next) => {
   const customError = {
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     msg: err.message || 'Something went wrong try again later',

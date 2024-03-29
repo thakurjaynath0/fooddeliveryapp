@@ -76,9 +76,9 @@ const getPricing = async (pricingId, { query } = {}) => {
 };
 
 const updatePricing = async (pricingId, updateData) => {
-  let pricing = await getPricing(pricingId);
+  const pricing = await getPricing(pricingId);
   Object.assign(pricing, updateData);
-  pricing = await Pricings.update(updateData, { where: { id: pricingId } });
+  await pricing.save();
   return pricing;
 };
 
